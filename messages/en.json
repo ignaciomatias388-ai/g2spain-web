@@ -16,20 +16,21 @@
   "stats": {
     "imports": "Cars imported",
     "transparency": "Full transparency",
-    "delivery": "Delivery in Spain",
+    "delivery": "Average delivery",
     "rating": "Customer rating"
   },
   "about": {
     "heading": "Experts in importing cars from Germany to Spain"
   },
   "process": {
-    "heading": "How to import a car from Germany to Spain?",
-    "sub": "From zero to your imported car in 5 steps — we handle everything",
-    "step1_title": "Find your car",
-    "step2_title": "Free video call",
-    "step3_title": "Exact quote",
-    "step4_title": "We handle everything",
-    "step5_title": "Delivery in 5-10 days"
+    "heading": "From 0 to your imported car",
+    "sub": "Just 3 steps — we handle everything",
+    "step1_title": "Tailored selection",
+    "step2_title": "Expert evaluation on-site",
+    "step3_title": "Full management and delivery in Spain",
+    "step1_desc": "We define your ideal vehicle together and present only handpicked units from the German market that meet your quality, year and budget criteria.",
+    "step2_desc": "Every vehicle is inspected in detail by our team in Germany before any purchase commitment.",
+    "step3_desc": "We handle everything: purchase, transport, paperwork and homologation. Your car arrives in Spain ready to drive."
   },
   "calculator": {
     "heading": "Calculate the real cost of importing your car from Germany",

@@ -14,22 +14,23 @@
     "btn_call": "Kostenloses Gespräch"
   },
   "stats": {
-    "imports": "Importierte Autos",
+    "imports": "Importierte Fahrzeuge",
     "transparency": "Volle Transparenz",
-    "delivery": "Lieferung in Spanien",
+    "delivery": "Durchschn. Lieferzeit",
     "rating": "Kundenbewertung"
   },
   "about": {
     "heading": "Experten für Fahrzeugimport aus Deutschland nach Spanien"
   },
   "process": {
-    "heading": "Wie importiert man ein Auto aus Deutschland nach Spanien?",
-    "sub": "Von null bis zu deinem importierten Auto in 5 Schritten — wir erledigen alles",
-    "step1_title": "Du findest dein Auto",
-    "step2_title": "Kostenloses Gespräch",
-    "step3_title": "Genaues Angebot",
-    "step4_title": "Wir erledigen alles",
-    "step5_title": "Lieferung in 5-10 Tagen"
+    "heading": "Von 0 zu deinem importierten Auto",
+    "sub": "Nur 3 Schritte — wir erledigen alles",
+    "step1_title": "Maßgeschneiderte Auswahl",
+    "step2_title": "Expertenprüfung vor Ort",
+    "step3_title": "Komplettabwicklung und Lieferung nach Spanien",
+    "step1_desc": "Wir definieren gemeinsam dein ideales Fahrzeug und präsentieren nur handverlesene Einheiten vom deutschen Markt, die deinen Qualitäts-, Jahres- und Budgetvorgaben entsprechen.",
+    "step2_desc": "Jedes Fahrzeug wird von unserem Team in Deutschland vor jeder Kaufverpflichtung eingehend inspiziert.",
+    "step3_desc": "Wir kümmern uns um alles: Kauf, Transport, Papierkram und Homologierung. Dein Fahrzeug kommt fahrbereit in Spanien an."
   },
   "calculator": {
     "heading": "Berechne die echten Kosten deines Fahrzeugimports aus Deutschland",

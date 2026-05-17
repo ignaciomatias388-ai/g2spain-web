@@ -14,22 +14,23 @@
     "btn_call": "Videollamada gratuita"
   },
   "stats": {
-    "imports": "Autos importados",
+    "imports": "Coches importados",
     "transparency": "Transparencia total",
-    "delivery": "Entrega en España",
+    "delivery": "Entrega media",
     "rating": "Valoración clientes"
   },
   "about": {
     "heading": "Expertos en importación de coches desde Alemania a España"
   },
   "process": {
-    "heading": "¿Cómo importar un coche desde Alemania a España?",
-    "sub": "De cero a tu coche importado en 5 pasos — nosotros gestionamos todo",
-    "step1_title": "Encuentras tu auto",
-    "step2_title": "Videollamada gratis",
-    "step3_title": "Presupuesto exacto",
-    "step4_title": "Lo gestionamos todo",
-    "step5_title": "Entrega en 5-10 días"
+    "heading": "De 0 a tu coche importado",
+    "sub": "Solo 3 pasos — nosotros gestionamos todo",
+    "step1_title": "Selección a medida",
+    "step2_title": "Evaluación experta en origen",
+    "step3_title": "Gestión integral y entrega en España",
+    "step1_desc": "Definimos contigo el vehículo ideal y te presentamos únicamente unidades seleccionadas del mercado alemán que cumplen tus criterios de calidad, año y presupuesto.",
+    "step2_desc": "Cada vehículo es inspeccionado en detalle por nuestro equipo en Alemania antes de cualquier compromiso de compra.",
+    "step3_desc": "Nos encargamos de todo el proceso: compra, transporte, trámites y homologación. Tu coche llega a España listo para circular."
   },
   "calculator": {
     "heading": "Calcula el coste real de importar tu coche desde Alemania",
