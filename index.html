@@ -109,13 +109,14 @@ body{font-family:'Inter',sans-serif;background:#080808;color:#fff;overflow-x:hid
 .hero-title{font-family:'Rajdhani',sans-serif;font-size:clamp(30px,4.5vw,58px);font-weight:700;color:#fff;line-height:1.05;letter-spacing:1px;text-shadow:0 2px 20px rgba(0,0,0,0.5);}
 .hero-title .g2-red{color:#d62d20;}
 .hero-title span{color:#c9a227;}
-.hero-sub{font-family:'Inter',sans-serif;font-size:clamp(11px,1.2vw,14px);color:rgba(255,255,255,0.72);margin-top:22px;letter-spacing:2px;text-transform:uppercase;text-shadow:0 1px 10px rgba(0,0,0,0.55);border-left:2px solid #c9a227;padding-left:10px;}
+.hero-sub{font-family:'Inter',sans-serif;font-size:clamp(11px,1.2vw,14px);font-weight:500;color:rgba(255,255,255,0.72);margin:22px 0 0;letter-spacing:2px;text-transform:uppercase;text-shadow:0 1px 10px rgba(0,0,0,0.55);border-left:2px solid #c9a227;padding-left:10px;line-height:1.5;}
 .hero-btns{position:absolute;bottom:44px;left:50%;transform:translateX(-50%);display:flex;gap:14px;flex-wrap:wrap;justify-content:center;z-index:3;}
 .btn-p{background:rgba(214,45,32,0.92);color:#fff;border:none;padding:14px 28px;border-radius:7px;font-size:14px;cursor:pointer;font-weight:500;display:flex;align-items:center;gap:8px;transition:background .2s;text-decoration:none;backdrop-filter:blur(4px);}
 .btn-p:hover{background:#d62d20;}
 .btn-s{background:rgba(0,0,0,0.55);color:#c9a227;border:1.5px solid #c9a227;padding:14px 28px;border-radius:7px;font-size:14px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all .2s;text-decoration:none;backdrop-filter:blur(4px);}
 .btn-s:hover{background:rgba(201,162,39,.15);}
-@media(max-width:768px){.hero{height:72vw;min-height:340px;max-height:560px;}.hero-car{object-position:center 35%;}.hero-btns{bottom:20px;gap:8px;}.btn-p,.btn-s{padding:10px 18px;font-size:13px;}.hero-title-wrap{left:20px;max-width:calc(100% - 40px);transform:translateY(-55%);}}
+@media(max-width:768px){.hero{height:72vw;min-height:340px;max-height:560px;}.hero-car{object-position:center 35%;}.hero-btns{bottom:20px;gap:8px;}.btn-p,.btn-s{padding:10px 18px;font-size:13px;}.hero-title-wrap{left:20px;max-width:calc(100% - 40px);transform:translateY(-55%);}.hero-sub{font-size:10px;letter-spacing:1px;}}
+@media(max-width:480px){.hero-sub{font-size:9px;letter-spacing:.5px;}}
 
 /* STATS */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);}
@@ -248,9 +249,8 @@ section h2{font-family:'Rajdhani',sans-serif;font-size:32px;font-weight:700;text
 .car-listing-meta{font-size:11px;color:#555;margin-bottom:10px;display:flex;gap:10px;flex-wrap:wrap;}
 .car-listing-meta span{display:flex;align-items:center;gap:3px;}
 .car-listing-price{font-family:'Rajdhani',sans-serif;font-size:22px;font-weight:700;color:#c9a227;margin-bottom:12px;}
-.car-listing-ctas{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
-.car-listing-cta{background:#111;border:1px solid #2a2a2a;color:#888;padding:7px 6px;border-radius:5px;font-size:10px;text-align:center;text-decoration:none;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:4px;}
-.car-listing-cta:hover{border-color:#c9a227;color:#c9a227;}
+.car-listing-cta{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;background:#d62d20;border:none;color:#fff;padding:10px 14px;border-radius:6px;font-size:12px;font-weight:500;font-family:'Inter',sans-serif;text-align:center;cursor:pointer;transition:background .2s;}
+.car-listing-cta:hover{background:#b82318;}
 .car-no-img{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,#111 0%,#161616 100%);}
 .car-no-img i{font-size:32px;color:#2a2a2a;}
 .car-no-img span{font-size:10px;color:#333;letter-spacing:1px;text-transform:uppercase;}
@@ -702,17 +702,33 @@ section h2{font-family:'Rajdhani',sans-serif;font-size:32px;font-weight:700;text
 
       <!-- LEAD CAPTURE POST-CALCULADORA -->
       <div id="lead-capture" style="display:none;margin-top:28px;background:rgba(201,162,39,0.06);border:1px solid rgba(201,162,39,0.35);border-radius:12px;padding:28px 24px;">
-        <h3 style="font-family:'Rajdhani',sans-serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:6px;">¿Quieres el presupuesto exacto para este coche?</h3>
-        <p style="font-size:13px;color:#888;margin-bottom:20px;line-height:1.6;">Déjanos tus datos y te enviamos un cálculo personalizado con disponibilidad real del vehículo en Alemania.</p>
-        <div style="display:grid;gap:10px;">
-          <input type="text" id="lead-nombre" placeholder="Tu nombre" style="width:100%;background:#080808;border:1px solid #2a2a2a;color:#fff;padding:10px 14px;border-radius:6px;font-size:13px;font-family:'Inter',sans-serif;outline:none;">
-          <input type="email" id="lead-email" placeholder="Tu email" style="width:100%;background:#080808;border:1px solid #2a2a2a;color:#fff;padding:10px 14px;border-radius:6px;font-size:13px;font-family:'Inter',sans-serif;outline:none;">
-          <input type="tel" id="lead-telefono" placeholder="Tu teléfono (opcional)" style="width:100%;background:#080808;border:1px solid #2a2a2a;color:#fff;padding:10px 14px;border-radius:6px;font-size:13px;font-family:'Inter',sans-serif;outline:none;">
-          <button onclick="enviarLead()" style="background:#d62d20;color:#fff;border:none;padding:14px 24px;border-radius:7px;font-size:14px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;width:100%;display:flex;align-items:center;justify-content:center;gap:8px;">
-            <i class="ti ti-send"></i> Recibir presupuesto personalizado
-          </button>
+        <div id="lead-form-wrap">
+          <h3 style="font-family:'Rajdhani',sans-serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:6px;">¿Quieres el presupuesto exacto para este coche?</h3>
+          <p style="font-size:13px;color:#888;margin-bottom:20px;line-height:1.6;">Déjanos tus datos y te enviamos un cálculo personalizado con disponibilidad real del vehículo en Alemania.</p>
+          <form id="lead-form" action="https://formspree.io/f/FORMSPREE_ID" method="POST" style="display:grid;gap:10px;">
+            <input type="hidden" name="_subject" value="Nuevo lead G2Spain Auto">
+            <input type="text" name="nombre" id="lead-nombre" placeholder="Tu nombre *" required style="width:100%;background:#080808;border:1px solid #2a2a2a;color:#fff;padding:10px 14px;border-radius:6px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;">
+            <input type="email" name="email" id="lead-email" placeholder="Tu email *" required style="width:100%;background:#080808;border:1px solid #2a2a2a;color:#fff;padding:10px 14px;border-radius:6px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;">
+            <input type="tel" name="telefono" id="lead-telefono" placeholder="Tu teléfono *" required style="width:100%;background:#080808;border:1px solid #2a2a2a;color:#fff;padding:10px 14px;border-radius:6px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;">
+            <input type="text" name="modelo" id="lead-modelo" placeholder="Modelo del coche (ej: BMW M4 2023)" style="width:100%;background:#080808;border:1px solid #2a2a2a;color:#fff;padding:10px 14px;border-radius:6px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;">
+            <textarea name="mensaje" id="lead-mensaje" placeholder="Link del anuncio o detalles adicionales (opcional)" rows="3" style="width:100%;background:#080808;border:1px solid #2a2a2a;color:#fff;padding:10px 14px;border-radius:6px;font-size:13px;font-family:'Inter',sans-serif;outline:none;resize:vertical;box-sizing:border-box;"></textarea>
+            <input type="text" name="_gotcha" style="display:none">
+            <button type="submit" id="lead-btn" style="background:#d62d20;color:#fff;border:none;padding:14px 24px;border-radius:7px;font-size:14px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;width:100%;display:flex;align-items:center;justify-content:center;gap:8px;">
+              <i class="ti ti-send"></i> Recibir presupuesto
+            </button>
+          </form>
         </div>
-        <p id="lead-ok" style="display:none;margin-top:14px;text-align:center;color:#c9a227;font-size:13px;font-weight:500;">✅ ¡Recibido! Te contactamos en menos de 24 horas.</p>
+        <div id="lead-ok" style="display:none;text-align:center;padding:20px 0;">
+          <div style="font-size:36px;margin-bottom:16px;">✅</div>
+          <h3 style="font-family:'Rajdhani',sans-serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:12px;">Gracias. Hemos recibido tu solicitud.</h3>
+          <p style="font-size:13px;color:#888;line-height:1.8;margin-bottom:12px;">En menos de 24 horas te enviaremos:</p>
+          <div style="display:grid;gap:6px;text-align:left;max-width:280px;margin:0 auto;">
+            <div style="font-size:13px;color:#888;display:flex;align-items:center;gap:8px;"><span style="color:#c9a227;">→</span> Coste total del vehículo en España</div>
+            <div style="font-size:13px;color:#888;display:flex;align-items:center;gap:8px;"><span style="color:#c9a227;">→</span> Disponibilidad real en Alemania</div>
+            <div style="font-size:13px;color:#888;display:flex;align-items:center;gap:8px;"><span style="color:#c9a227;">→</span> Análisis completo del coche</div>
+          </div>
+          <p style="margin-top:20px;font-size:11px;color:#444;letter-spacing:1px;text-transform:uppercase;">G2Spain Auto</p>
+        </div>
       </div>
     </div>
   </div>
@@ -916,19 +932,41 @@ function openWA(){
   var msg='Hola, me gustaría importar un auto desde Alemania a España. Quisiera saber el precio estimado, los tiempos de entrega y el proceso completo. ¿Me puedes ayudar?';
   window.open('https://wa.me/491771800435?text='+encodeURIComponent(msg),'_blank','noopener,noreferrer');
 }
-function openWAcar(model){
-  var msg='Hola, me interesa importar un '+model+' desde Alemania a España. ¿Me podéis ayudar con la gestión completa?';
-  window.open('https://wa.me/491771800435?text='+encodeURIComponent(msg),'_blank','noopener,noreferrer');
+function solicitarImportacionCoche(model, price, portal){
+  var lc=document.getElementById('lead-capture');
+  lc.style.display='block';
+  var modeloField=document.getElementById('lead-modelo');
+  if(modeloField) modeloField.value=model+(price?' — '+price:'')+(portal?' ('+portal+')':'');
+  document.getElementById('lead-form-wrap').style.display='block';
+  document.getElementById('lead-ok').style.display='none';
+  setTimeout(function(){lc.scrollIntoView({behavior:'smooth',block:'center'});},100);
 }
-function enviarLead(){
-  var nombre=document.getElementById('lead-nombre').value.trim();
-  var email=document.getElementById('lead-email').value.trim();
-  var tel=document.getElementById('lead-telefono').value.trim();
-  if(!nombre||!email){alert('Por favor introduce tu nombre y email');return;}
-  var msg='Nuevo lead desde la web:\nNombre: '+nombre+'\nEmail: '+email+(tel?'\nTeléfono: '+tel:'');
-  window.open('https://wa.me/491771800435?text='+encodeURIComponent(msg),'_blank','noopener,noreferrer');
-  document.getElementById('lead-ok').style.display='block';
-}
+// Formspree AJAX submission
+document.addEventListener('DOMContentLoaded',function(){
+  var form=document.getElementById('lead-form');
+  if(!form) return;
+  form.addEventListener('submit',async function(e){
+    e.preventDefault();
+    var btn=document.getElementById('lead-btn');
+    btn.disabled=true;
+    btn.innerHTML='<i class="ti ti-loader-2"></i> Enviando...';
+    try{
+      var res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}});
+      if(res.ok){
+        document.getElementById('lead-form-wrap').style.display='none';
+        document.getElementById('lead-ok').style.display='block';
+      } else {
+        btn.disabled=false;
+        btn.innerHTML='<i class="ti ti-send"></i> Recibir presupuesto';
+        alert('Error al enviar. Por favor inténtalo de nuevo o contáctanos por WhatsApp.');
+      }
+    }catch(err){
+      btn.disabled=false;
+      btn.innerHTML='<i class="ti ti-send"></i> Recibir presupuesto';
+      alert('Error de conexión. Por favor inténtalo de nuevo.');
+    }
+  });
+});
 
 function selectCalcMode(mode, el){
   document.querySelectorAll('.calc-mode').forEach(function(m){m.classList.remove('selected');});
@@ -1253,7 +1291,9 @@ const catalogData={
 
 function renderCarCard(c, as, mob, fallback){
   const imgSrc = c.img || fallback;
-  const modelEnc = encodeURIComponent(c.model);
+  const mEsc = c.model.replace(/'/g,"\\'");
+  const pEsc = c.price.replace(/'/g,"\\'");
+  const porEsc = c.portal.replace(/'/g,"\\'");
   return `
     <div class="car-listing">
       <div class="car-listing-img">
@@ -1269,10 +1309,9 @@ function renderCarCard(c, as, mob, fallback){
           <span><i class="ti ti-engine"></i> ${c.fuel}</span>
         </div>
         <div class="car-listing-price">${c.price}</div>
-        <div class="car-listing-ctas">
-          <button onclick="openWAcar('${c.model}')" class="car-listing-cta" style="background:none;border:inherit;color:inherit;cursor:pointer;font:inherit;width:100%;display:flex;align-items:center;justify-content:center;gap:4px;"><i class="ti ti-brand-whatsapp"></i> Solicitar importación</button>
-          <button onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})" class="car-listing-cta" style="background:none;border:inherit;color:inherit;cursor:pointer;font:inherit;width:100%;display:flex;align-items:center;justify-content:center;gap:4px;"><i class="ti ti-calendar-event"></i> Videollamada gratuita</button>
-        </div>
+        <button onclick="solicitarImportacionCoche('${mEsc}','${pEsc}','${porEsc}')" class="car-listing-cta">
+          <i class="ti ti-send"></i> Solicitar importación de este coche
+        </button>
       </div>
     </div>`;
 }
