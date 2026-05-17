@@ -76,8 +76,8 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap');
 *{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{font-family:'Inter',sans-serif;background:#080808;color:#fff;overflow-x:hidden;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;-moz-text-size-adjust:100%;text-size-adjust:100%;}
+body{font-family:'Inter',sans-serif;background:#080808;color:#fff;overflow-x:hidden;-webkit-text-size-adjust:100%;}
 
 /* NAV */
 .nav{position:sticky;top:0;z-index:100;background:rgba(8,8,8,0.97);border-bottom:2px solid #c9a227;display:flex;align-items:center;justify-content:space-between;padding:14px 40px;}
@@ -110,13 +110,26 @@ body{font-family:'Inter',sans-serif;background:#080808;color:#fff;overflow-x:hid
 .hero-title .g2-red{color:#d62d20;}
 .hero-title span{color:#c9a227;}
 .hero-sub{font-family:'Inter',sans-serif;font-size:clamp(11px,1.2vw,14px);font-weight:500;color:rgba(255,255,255,0.72);margin:22px 0 0;letter-spacing:2px;text-transform:uppercase;text-shadow:0 1px 10px rgba(0,0,0,0.55);border-left:2px solid #c9a227;padding-left:10px;line-height:1.5;}
+.hero-desc{display:none;}
+@media(min-width:769px){.hero-desc{display:block !important;}}
 .hero-btns{position:absolute;bottom:44px;left:50%;transform:translateX(-50%);display:flex;gap:14px;flex-wrap:wrap;justify-content:center;z-index:3;}
 .btn-p{background:rgba(214,45,32,0.92);color:#fff;border:none;padding:14px 28px;border-radius:7px;font-size:14px;cursor:pointer;font-weight:500;display:flex;align-items:center;gap:8px;transition:background .2s;text-decoration:none;backdrop-filter:blur(4px);}
 .btn-p:hover{background:#d62d20;}
 .btn-s{background:rgba(0,0,0,0.55);color:#c9a227;border:1.5px solid #c9a227;padding:14px 28px;border-radius:7px;font-size:14px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all .2s;text-decoration:none;backdrop-filter:blur(4px);}
 .btn-s:hover{background:rgba(201,162,39,.15);}
-@media(max-width:768px){.hero{height:72vw;min-height:340px;max-height:560px;}.hero-car{object-position:center 35%;}.hero-btns{bottom:20px;gap:8px;}.btn-p,.btn-s{padding:10px 18px;font-size:13px;}.hero-title-wrap{left:20px;max-width:calc(100% - 40px);transform:translateY(-55%);}.hero-sub{font-size:10px;letter-spacing:1px;}}
-@media(max-width:480px){.hero-sub{font-size:9px;letter-spacing:.5px;}}
+@media(max-width:768px){
+  .hero{height:72vw;min-height:340px;max-height:560px;}
+  .hero-car{object-position:center 35%;}
+  .hero-btns{bottom:20px;gap:8px;}
+  .btn-p,.btn-s{padding:10px 18px;font-size:13px;}
+  .hero-title-wrap{left:20px;max-width:calc(100% - 40px);transform:translateY(-55%);overflow:hidden;}
+  .hero-title{font-size:clamp(26px,7vw,38px);}
+  .hero-sub{font-size:12px;letter-spacing:.5px;margin-top:8px;line-height:1.4;}
+}
+@media(max-width:480px){
+  .hero-title{font-size:26px;}
+  .hero-sub{font-size:11px;letter-spacing:.3px;margin-top:6px;}
+}
 
 /* STATS */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);}
@@ -421,7 +434,7 @@ section h2{font-family:'Rajdhani',sans-serif;font-size:32px;font-weight:700;text
   <div class="hero-title-wrap">
     <div class="hero-title">G<span class="g2-red">2</span><span>Spain</span></div>
     <h1 class="hero-sub">Importa coches desde Alemania a España sin complicaciones</h1>
-    <p style="font-family:'Inter',sans-serif;font-size:clamp(10px,1.05vw,13px);color:rgba(255,255,255,0.55);margin-top:12px;letter-spacing:1px;text-shadow:0 1px 8px rgba(0,0,0,0.6);">Gestionamos búsqueda, compra, transporte, homologación y matriculación de tu coche premium desde Alemania</p>
+    <p style="font-family:'Inter',sans-serif;font-size:clamp(12px,1.05vw,13px);color:rgba(255,255,255,0.55);margin-top:10px;letter-spacing:.5px;text-shadow:0 1px 8px rgba(0,0,0,0.6);line-height:1.5;display:none;" class="hero-desc">Gestionamos búsqueda, compra, transporte, homologación y matriculación de tu coche premium desde Alemania</p>
   </div>
   <div class="hero-btns">
     <button class="btn-p" onclick="document.getElementById('calculadora').scrollIntoView({behavior:'smooth'})">
@@ -1464,4 +1477,3 @@ setCatalog('bmw', document.querySelector('.brand-main-tab'));
 </script>
 </body>
 </html>
-
