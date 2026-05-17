@@ -1,0 +1,69 @@
+{
+  "nav": {
+    "about": "About",
+    "process": "Process",
+    "calculator": "Calculator",
+    "catalog": "Catalog",
+    "reviews": "Reviews",
+    "contact": "Contact",
+    "cta": "Free video call"
+  },
+  "hero": {
+    "subtitle": "Import cars from Germany to Spain — hassle-free",
+    "btn_calc": "Calculate import",
+    "btn_call": "Free video call"
+  },
+  "stats": {
+    "imports": "Cars imported",
+    "transparency": "Full transparency",
+    "delivery": "Delivery in Spain",
+    "rating": "Customer rating"
+  },
+  "about": {
+    "heading": "Experts in importing cars from Germany to Spain"
+  },
+  "process": {
+    "heading": "How to import a car from Germany to Spain?",
+    "sub": "From zero to your imported car in 5 steps — we handle everything",
+    "step1_title": "Find your car",
+    "step2_title": "Free video call",
+    "step3_title": "Exact quote",
+    "step4_title": "We handle everything",
+    "step5_title": "Delivery in 5-10 days"
+  },
+  "calculator": {
+    "heading": "Calculate the real cost of importing your car from Germany",
+    "sub": "Enter the vehicle details and get a full estimated quote instantly"
+  },
+  "lead": {
+    "title": "Want an exact quote for this car?"
+  },
+  "form": {
+    "name": "Your name *",
+    "email": "Your email *",
+    "phone": "Your phone *",
+    "model": "Car model (e.g.: BMW M4 2023)",
+    "message": "Ad link or additional details (optional)"
+  },
+  "catalog": {
+    "heading": "BMW, Mercedes and Audi cars imported from Germany",
+    "sub": "Real examples from the German market — contact us to manage the import of any vehicle",
+    "cta_request": "Request import of this car"
+  },
+  "reviews": {
+    "heading": "Over 50 customers have imported their car from Germany with us",
+    "sub": "More than 50 successful imports — average rating of 5★"
+  },
+  "contact": {
+    "heading": "Start your import today — Free consultation, no commitment",
+    "wa_title": "WhatsApp",
+    "wa_desc": "+49 177 180 0435 — Fast reply from Germany",
+    "call_title": "Free video call",
+    "call_desc": "We help you understand your import case from Germany, answer all your questions and explain the whole process step by step.",
+    "ig_title": "Instagram"
+  },
+  "modal": {
+    "car_label": "Selected vehicle",
+    "title": "Request import of this car"
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "nav": {
+    "about": "Nosotros",
+    "process": "Proceso",
+    "calculator": "Calculadora",
+    "catalog": "Catálogo",
+    "reviews": "Opiniones",
+    "contact": "Contacto",
+    "cta": "Videollamada gratis"
+  },
+  "hero": {
+    "subtitle": "Importa coches desde Alemania a España sin complicaciones",
+    "btn_calc": "Calcular importación",
+    "btn_call": "Videollamada gratuita"
+  },
+  "stats": {
+    "imports": "Autos importados",
+    "transparency": "Transparencia total",
+    "delivery": "Entrega en España",
+    "rating": "Valoración clientes"
+  },
+  "about": {
+    "heading": "Expertos en importación de coches desde Alemania a España"
+  },
+  "process": {
+    "heading": "¿Cómo importar un coche desde Alemania a España?",
+    "sub": "De cero a tu coche importado en 5 pasos — nosotros gestionamos todo",
+    "step1_title": "Encuentras tu auto",
+    "step2_title": "Videollamada gratis",
+    "step3_title": "Presupuesto exacto",
+    "step4_title": "Lo gestionamos todo",
+    "step5_title": "Entrega en 5-10 días"
+  },
+  "calculator": {
+    "heading": "Calcula el coste real de importar tu coche desde Alemania",
+    "sub": "Introduce los datos del vehículo y obtén un presupuesto estimado completo al instante"
+  },
+  "lead": {
+    "title": "¿Quieres el presupuesto exacto para este coche?"
+  },
+  "form": {
+    "name": "Tu nombre *",
+    "email": "Tu email *",
+    "phone": "Tu teléfono *",
+    "model": "Modelo del coche (ej: BMW M4 2023)",
+    "message": "Link del anuncio o detalles adicionales (opcional)"
+  },
+  "catalog": {
+    "heading": "Coches BMW, Mercedes y Audi importados desde Alemania",
+    "sub": "Ejemplos reales del mercado alemán — contáctanos para gestionar la importación de cualquier vehículo",
+    "cta_request": "Solicitar importación de este coche"
+  },
+  "reviews": {
+    "heading": "Más de 50 clientes han importado su coche desde Alemania con nosotros",
+    "sub": "Más de 50 importaciones exitosas — valoración media de 5★"
+  },
+  "contact": {
+    "heading": "Empieza tu importación hoy — Consulta gratuita sin compromiso",
+    "wa_title": "WhatsApp",
+    "wa_desc": "+49 177 180 0435 — Respuesta rápida desde Alemania",
+    "call_title": "Videollamada gratis",
+    "call_desc": "Te ayudamos a entender tu caso de importación desde Alemania, resolvemos tus dudas y te explicamos todo el proceso paso a paso.",
+    "ig_title": "Instagram"
+  },
+  "modal": {
+    "car_label": "Vehículo seleccionado",
+    "title": "Solicitar importación de este coche"
+  }
+}
