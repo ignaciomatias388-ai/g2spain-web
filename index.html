@@ -1984,13 +1984,120 @@ const DELIVERY_TIME = '15 días';
 /* ── Data enrichment: imageQuery + delivery + experience ── */
 const _PERF2 = ['M4 Competition','M5','AMG C63','AMG E63','RS3 Sportback','RS6','911 Carrera','Taycan 4S','Panamera 4S','Mégane RS Trophy','Cupra Formentor VZ5'];
 const _PERF1 = ['320i M-Sport','Macan S','Golf GTI','Golf R','GR86','Supra','Puma ST','Mustang','Focus ST','Cupra León','Octavia RS','i30 N Performance','XC60 B5','Astra GSe','Kia EV6 GT-Line AWD'];
+
+/* Precise Wikimedia Commons search terms per model — drives dynamic image fetching */
+const _QUERY_MAP = {
+  // BMW
+  'BMW 116i Hatchback':       'BMW 1 Series F20 hatchback exterior',
+  'BMW 320i M-Sport':         'BMW 3 Series G20 M Sport sedan exterior',
+  'BMW X3 xDrive20d':         'BMW X3 G01 SUV exterior',
+  'BMW M4 Competition':       'BMW M4 G82 Competition coupe exterior',
+  'BMW 530d xDrive':          'BMW 5 Series G30 530d sedan exterior',
+  'BMW X5 xDrive40d':         'BMW X5 G05 SUV exterior',
+  // Mercedes-Benz
+  'Mercedes Clase A 180':       'Mercedes-Benz A-Class W177 hatchback exterior',
+  'Mercedes Clase C 220d':      'Mercedes-Benz C-Class W206 sedan exterior',
+  'Mercedes GLC 300 4MATIC':    'Mercedes-Benz GLC X254 SUV exterior',
+  'Mercedes-AMG C63 S':         'Mercedes-Benz C63 AMG W205 exterior',
+  'Mercedes Clase E 220d':      'Mercedes-Benz E-Class W213 sedan exterior',
+  'Mercedes GLE 350d 4MATIC':   'Mercedes-Benz GLE W167 SUV exterior',
+  // Audi
+  'Audi A3 Sportback 30 TFSI':  'Audi A3 8Y Sportback exterior',
+  'Audi A4 Avant 35 TDI':       'Audi A4 B9 Avant estate exterior',
+  'Audi A6 Avant 40 TDI':       'Audi A6 C8 Avant exterior',
+  'Audi Q5 40 TDI S-Line':      'Audi Q5 FY S-Line SUV exterior',
+  'Audi Q7 55 TFSI quattro':    'Audi Q7 4M SUV exterior',
+  'Audi RS3 Sportback':         'Audi RS3 8Y Sportback exterior',
+  // Volkswagen
+  'VW Golf 1.5 TSI Life':       'Volkswagen Golf 8 MK8 hatchback exterior',
+  'VW Golf GTI Performance':    'Volkswagen Golf 8 GTI exterior',
+  'VW Golf R 4Motion':          'Volkswagen Golf 8 R 4Motion exterior',
+  'VW Polo 1.0 TSI Comfortline':'Volkswagen Polo AW hatchback exterior',
+  'VW T-Roc R-Line 1.5 TSI':   'Volkswagen T-Roc R-Line SUV exterior',
+  'VW Tiguan 2.0 TDI 4Motion':  'Volkswagen Tiguan 2nd generation SUV exterior',
+  // Porsche
+  'Porsche 911 Carrera S':      'Porsche 911 992 Carrera S coupe exterior',
+  'Porsche Cayenne 3.0 V6':     'Porsche Cayenne 9Y0 SUV exterior',
+  'Porsche Macan 2.0 PDK':      'Porsche Macan 95B SUV exterior',
+  'Porsche Macan S':            'Porsche Macan S 95B SUV exterior',
+  'Porsche Panamera 4S':        'Porsche Panamera 971 4S exterior',
+  'Porsche Taycan 4S':          'Porsche Taycan 4S electric exterior',
+  // Toyota
+  'Toyota Corolla TS Hybrid':   'Toyota Corolla Touring Sports E210 hybrid exterior',
+  'Toyota GR86':                'Toyota GR86 ZN8 coupe exterior',
+  'Toyota Land Cruiser 2.8 D':  'Toyota Land Cruiser 300 series SUV exterior',
+  'Toyota RAV4 Hybrid AWD-i':   'Toyota RAV4 XA50 hybrid SUV exterior',
+  'Toyota Supra 3.0 GR':        'Toyota GR Supra A90 coupe exterior',
+  'Toyota Yaris 1.5 Hybrid':    'Toyota Yaris GR XP210 hybrid exterior',
+  // Renault
+  'Renault Arkana E-Tech Hybrid':'Renault Arkana coupe SUV exterior',
+  'Renault Austral E-Tech':      'Renault Austral SUV exterior',
+  'Renault Clio 1.0 TCe':        'Renault Clio V MK5 hatchback exterior',
+  'Renault Mégane E-Tech EV60':  'Renault Megane E-Tech electric exterior',
+  'Renault Mégane RS Line':      'Renault Megane 4 RS Line exterior',
+  'Renault Mégane RS Trophy':    'Renault Megane RS Trophy exterior',
+  // SEAT / Cupra
+  'SEAT Ateca 1.5 TSI FR':      'SEAT Ateca FR SUV exterior',
+  'SEAT Ibiza 1.0 TSI FR':      'SEAT Ibiza 6F hatchback exterior',
+  'SEAT León 1.5 TSI FR':       'SEAT Leon 4th gen hatchback exterior',
+  'Cupra Born 170 kW':          'Cupra Born electric hatchback exterior',
+  'Cupra Formentor VZ5':        'Cupra Formentor VZ5 SUV exterior',
+  'Cupra León e-Hybrid VZ':     'Cupra Leon e-Hybrid VZ exterior',
+  // Skoda
+  'Skoda Enyaq iV 80':          'Skoda Enyaq iV 80 electric SUV exterior',
+  'Skoda Fabia 1.0 TSI':        'Skoda Fabia IV MK4 hatchback exterior',
+  'Skoda Kodiaq 2.0 TDI 4x4':   'Skoda Kodiaq SUV exterior',
+  'Skoda Octavia 2.0 TDI':      'Skoda Octavia IV sedan exterior',
+  'Skoda Octavia RS 245':       'Skoda Octavia RS IV exterior',
+  'Skoda Superb 2.0 TDI':       'Skoda Superb III sedan exterior',
+  // Ford
+  'Ford Fiesta 1.0 EcoBoost':   'Ford Fiesta MK8 hatchback exterior',
+  'Ford Focus 1.5 EcoBoost':    'Ford Focus 4th gen hatchback exterior',
+  'Ford Focus ST 280':          'Ford Focus ST MK4 exterior',
+  'Ford Kuga 2.5 PHEV':         'Ford Kuga 3rd gen PHEV SUV exterior',
+  'Ford Mustang 5.0 GT V8':     'Ford Mustang S550 GT V8 exterior',
+  'Ford Puma ST':               'Ford Puma ST crossover exterior',
+  // Opel
+  'Opel Astra 1.2 GS Line':     'Opel Astra L GS Line hatchback exterior',
+  'Opel Astra GSe Hybrid':      'Opel Astra GSe hybrid exterior',
+  'Opel Corsa 1.2 GS Line':     'Opel Corsa F GS Line hatchback exterior',
+  'Opel Grandland X Hybrid4':   'Opel Grandland X Hybrid4 SUV exterior',
+  'Opel Insignia Grand Sport':  'Opel Insignia B Grand Sport sedan exterior',
+  'Opel Mokka-e 100% Eléctrico':'Opel Mokka-e electric SUV exterior',
+  // Peugeot
+  'Peugeot 2008 1.2 Allure':   'Peugeot 2008 second gen SUV exterior',
+  'Peugeot 208 1.2 PureTech':  'Peugeot 208 II hatchback exterior',
+  'Peugeot 3008 GT Hybrid':    'Peugeot 3008 GT hybrid SUV exterior',
+  'Peugeot 308 Allure Plus':   'Peugeot 308 III hatchback exterior',
+  'Peugeot 508 SW GT':         'Peugeot 508 SW GT estate exterior',
+  'Peugeot e-208 GT':          'Peugeot e-208 GT electric exterior',
+  // Hyundai
+  'Hyundai i20 1.0 T-GDI':     'Hyundai i20 BC3 hatchback exterior',
+  'Hyundai i30 N Performance':  'Hyundai i30 N Performance hatchback exterior',
+  // Kia
+  'Kia EV6 GT-Line AWD':       'Kia EV6 CV electric exterior',
+  'Kia Niro 2 Hybrid':         'Kia Niro SG2 hybrid exterior',
+  'Kia Picanto 1.0 GT Line':   'Kia Picanto JA GT Line exterior',
+  'Kia Sportage 1.6 T-GDI GT-Line':'Kia Sportage NQ5 GT-Line SUV exterior',
+  // Volvo
+  'Volvo C40 Recharge Pure Electric':'Volvo C40 Recharge electric exterior',
+  'Volvo V40 T3 Momentum':          'Volvo V40 estate exterior',
+  'Volvo V60 T6 AWD R-Design':      'Volvo V60 II T6 R-Design estate exterior',
+  'Volvo XC40 T4 Recharge AWD':     'Volvo XC40 T4 Recharge AWD SUV exterior',
+  'Volvo XC60 B5 AWD Polestar':     'Volvo XC60 B5 Polestar Engineered SUV exterior',
+  'Volvo XC90 B5 AWD Inscription':  'Volvo XC90 II B5 SUV exterior',
+};
+
 (function enrichCatalog(){
   Object.entries(catalogData).forEach(([brand, data]) => {
     data.cars.forEach(car => {
       if (!car.imageQuery) {
-        // Use model name (which already includes make) + year for specific Commons search
-        const slug = car.model.replace(/[^\w\s]/g,'').trim();
-        car.imageQuery = `${slug} ${car.year} front exterior automobile`;
+        // Exact match first, then prefix match in _QUERY_MAP, then generic fallback
+        const exactMatch = _QUERY_MAP[car.model];
+        const prefixMatch = exactMatch ? null :
+          Object.entries(_QUERY_MAP).find(([k]) => car.model.startsWith(k))?.[1];
+        car.imageQuery = exactMatch || prefixMatch ||
+          `${car.model.replace(/[^\w\s]/g,'').trim()} ${car.year} exterior`;
       }
       car.deliveryTimeDays = 15;
       if (car.experienceRequired === undefined) {
@@ -2001,45 +2108,65 @@ const _PERF1 = ['320i M-Sport','Macan S','Golf GTI','Golf R','GR86','Supra','Pum
   });
 })();
 
-/* ── Wikimedia Commons image API (async, cached) ── */
+/* ── Wikimedia Commons image API — multi-image, async, cached ── */
 const _imgCache = new Map();
-async function fetchCarImg(query) {
-  if (_imgCache.has(query)) return _imgCache.get(query);
+
+/* Returns array of up to `count` exterior car image URLs for a given query.
+   Results cached per query so repeated calls (card + gallery) are free. */
+async function fetchCarImages(query, count) {
+  count = count || 4;
+  if (_imgCache.has(query)) return _imgCache.get(query).slice(0, count);
   try {
-    const q = encodeURIComponent(query);
-    const url = `https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=${q}&gsrnamespace=6&prop=imageinfo&iiprop=url&iiurlwidth=800&format=json&origin=*&gsrlimit=10`;
+    const q   = encodeURIComponent(query);
+    const url = `https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=${q}&gsrnamespace=6&prop=imageinfo&iiprop=url&iiurlwidth=800&format=json&origin=*&gsrlimit=20`;
     const ctrl = new AbortController();
-    const t = setTimeout(() => ctrl.abort(), 5000);
+    const t = setTimeout(() => ctrl.abort(), 6000);
     const res = await fetch(url, { signal: ctrl.signal });
     clearTimeout(t);
     const data = await res.json();
     const pages = Object.values(data.query?.pages || {});
+    /* Keep only photo-style exterior images; reject icons, diagrams, interiors */
     const ok = pages.filter(p => {
-      const n = (p.title || '').toLowerCase();
+      const n   = (p.title || '').toLowerCase();
       const ext = n.split('.').pop();
       return ['jpg','jpeg','png'].includes(ext) &&
-             !n.includes('logo') && !n.includes('badge') && !n.includes('icon') &&
-             !n.includes('diagram') && !n.includes('emblem') && !n.includes('map');
+        !n.includes('logo')      && !n.includes('badge')   && !n.includes('icon')  &&
+        !n.includes('diagram')   && !n.includes('map')     && !n.includes('emblem')&&
+        !n.includes('wheel')     && !n.includes('engine')  && !n.includes('interior')&&
+        !n.includes('cockpit')   && !n.includes('dashboard')&& !n.includes('steering');
     });
-    const best = ok[0] || pages[0];
-    const imgUrl = best?.imageinfo?.[0]?.thumburl || null;
-    _imgCache.set(query, imgUrl);
-    return imgUrl;
-  } catch(e) { return null; }
+    const pool = ok.length ? ok : pages; // graceful fallback if all filtered
+    const imgs = pool.slice(0, 4).map(p => p.imageinfo?.[0]?.thumburl).filter(Boolean);
+    _imgCache.set(query, imgs);
+    return imgs.slice(0, count);
+  } catch(e) {
+    _imgCache.set(query, []);
+    return [];
+  }
+}
+
+/* Backward-compat single-URL wrapper */
+async function fetchCarImg(query) {
+  const arr = await fetchCarImages(query, 1);
+  return arr[0] || null;
 }
 
 async function _loadCardImages() {
-  const brand = currentBrand;
-  const snap  = [...currentCars]; // copy in case tab changes
+  const snap = [...currentCars]; // snapshot in case tab changes mid-loop
   for (let i = 0; i < snap.length; i++) {
-    const c   = snap[i];
+    const c     = snap[i];
     const imgEl = document.querySelector(`img[data-car-img="${i}"]`);
     if (!imgEl) continue;
     const sk = document.querySelector(`.car-img-skeleton[data-sk="${i}"]`);
-    const url = await fetchCarImg(c.imageQuery);
+
+    /* Fetch up to 4 images; cache array on the car object for gallery reuse */
+    const imgs = await fetchCarImages(c.imageQuery, 4);
+    c._fetchedImgs = imgs; // stored for openCarDetail gallery
+
+    const url = imgs[0];
     if (url) {
       imgEl.src = url;
-      imgEl.onload = () => { if(sk){ sk.style.opacity='0'; setTimeout(()=>sk.remove(),300); } };
+      imgEl.onload  = () => { if(sk){ sk.style.opacity='0'; setTimeout(()=>sk.remove(),300); } };
       imgEl.onerror = () => { if(sk) sk.style.display='none'; };
     } else {
       if(sk) sk.style.display='none';
@@ -2144,8 +2271,11 @@ function openCarDetail(idx){
   if(!c) return;
   const fb=BF[currentBrand]||BF.bmw;
 
-  // Gallery
-  _galImgs=(c.imgs&&c.imgs.length)?c.imgs:[c.img||fb];
+  // Gallery: prefer dynamically fetched images (unique per model),
+  // then static c.imgs, then single brand fallback
+  const _fetched = (c._fetchedImgs && c._fetchedImgs.length) ? c._fetchedImgs : [];
+  const _static  = (c.imgs && c.imgs.length) ? c.imgs : (c.img ? [c.img] : []);
+  _galImgs = _fetched.length ? _fetched : (_static.length ? _static : [fb]);
   _galIdx=0;
   _renderGal(fb);
 
