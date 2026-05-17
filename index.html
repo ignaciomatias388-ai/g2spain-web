@@ -350,14 +350,7 @@ section h2{font-family:'Rajdhani',sans-serif;font-size:32px;font-weight:700;text
   .nav-ig{display:none;}
   .nav-cta{display:none;}
   .hamburger{display:flex;}
-  .hero{min-height:520px;}
-  .hero-content{padding:60px 24px 60px;}
-  .hero-visual::after{background:linear-gradient(180deg,rgba(8,8,8,0.7) 0%,rgba(8,8,8,0.55) 100%);}
-  .hero h1{font-size:48px;}
   .stats{grid-template-columns:repeat(2,1fr);}
-  .about-inner{grid-template-columns:1fr;}
-  .calc-grid{grid-template-columns:1fr;}
-  .res-grid{grid-template-columns:1fr;}
   section{padding:50px 24px;}
   .nav{padding:12px 20px;}
   .footer{padding:24px 20px;}
@@ -935,6 +928,50 @@ section h2{font-family:'Rajdhani',sans-serif;font-size:32px;font-weight:700;text
   <div class="footer-copy" style="margin-top:8px;border-top:none;padding-top:0;">© 2026 G2 Spain Auto. Todos los derechos reservados.</div>
 </div>
 
+<!-- MODAL SOLICITUD COCHE -->
+<div id="car-modal-overlay" onclick="closeCarModal(event)" style="display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.75);backdrop-filter:blur(4px);overflow-y:auto;padding:20px;">
+  <div id="car-modal" style="background:#0f0f0f;border:1px solid #2a2a2a;border-top:3px solid #c9a227;border-radius:12px;max-width:520px;width:100%;margin:auto;padding:32px 28px;position:relative;animation:g2FadeUp .3s ease both;">
+    <button onclick="closeCarModal(null)" style="position:absolute;top:16px;right:16px;background:none;border:none;color:#555;font-size:20px;cursor:pointer;line-height:1;">✕</button>
+
+    <!-- Resumen del coche seleccionado -->
+    <div id="modal-car-summary" style="background:#141414;border:1px solid #1e1e1e;border-radius:8px;padding:16px;margin-bottom:24px;">
+      <div style="font-size:11px;color:#555;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">Vehículo seleccionado</div>
+      <div id="modal-car-model" style="font-family:'Rajdhani',sans-serif;font-size:20px;font-weight:700;color:#fff;margin-bottom:4px;"></div>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;">
+        <span id="modal-car-price" style="font-family:'Rajdhani',sans-serif;font-size:18px;color:#c9a227;font-weight:700;"></span>
+        <span id="modal-car-portal" style="font-size:12px;color:#555;align-self:center;"></span>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Rajdhani',sans-serif;font-size:20px;font-weight:700;color:#fff;margin-bottom:6px;">Solicitar importación de este coche</h3>
+    <p style="font-size:13px;color:#666;margin-bottom:20px;line-height:1.6;">Completa tus datos y te contactamos en menos de 24 horas con disponibilidad real y coste total en España.</p>
+
+    <div id="modal-form-wrap">
+      <form id="car-modal-form" action="https://formspree.io/f/mredzvzj" method="POST" style="display:grid;gap:10px;">
+        <input type="hidden" name="_subject" id="modal-subject" value="Solicitud importación — G2Spain">
+        <input type="hidden" name="vehiculo" id="modal-vehiculo-hidden">
+        <input type="text" name="nombre" placeholder="Nombre completo *" required style="background:#080808;border:1px solid #2a2a2a;color:#fff;padding:11px 14px;border-radius:6px;font-size:13px;font-family:'Inter',sans-serif;outline:none;width:100%;box-sizing:border-box;">
+        <input type="email" name="email" placeholder="Email *" required style="background:#080808;border:1px solid #2a2a2a;color:#fff;padding:11px 14px;border-radius:6px;font-size:13px;font-family:'Inter',sans-serif;outline:none;width:100%;box-sizing:border-box;">
+        <input type="tel" name="telefono" placeholder="Teléfono *" required style="background:#080808;border:1px solid #2a2a2a;color:#fff;padding:11px 14px;border-radius:6px;font-size:13px;font-family:'Inter',sans-serif;outline:none;width:100%;box-sizing:border-box;">
+        <textarea name="mensaje" placeholder="Comentarios adicionales (opcional)" rows="3" style="background:#080808;border:1px solid #2a2a2a;color:#fff;padding:11px 14px;border-radius:6px;font-size:13px;font-family:'Inter',sans-serif;outline:none;resize:vertical;width:100%;box-sizing:border-box;"></textarea>
+        <input type="text" name="_gotcha" style="display:none">
+        <button type="submit" id="modal-btn" style="background:#d62d20;color:#fff;border:none;padding:13px 20px;border-radius:7px;font-size:14px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;display:flex;align-items:center;justify-content:center;gap:8px;">
+          <i class="ti ti-send"></i> Enviar solicitud
+        </button>
+        <button type="button" onclick="closeCarModal(null)" style="background:none;border:none;color:#555;font-size:12px;cursor:pointer;padding:4px;text-decoration:underline;">Volver al catálogo</button>
+      </form>
+    </div>
+
+    <div id="modal-ok" style="display:none;text-align:center;padding:20px 0;">
+      <div style="font-size:40px;margin-bottom:16px;">✅</div>
+      <h3 style="font-family:'Rajdhani',sans-serif;font-size:22px;color:#fff;margin-bottom:12px;">Solicitud recibida</h3>
+      <p style="font-size:13px;color:#888;line-height:1.8;margin-bottom:16px;">En menos de 24 horas te enviamos coste total, disponibilidad real y análisis del vehículo.</p>
+      <p style="font-size:11px;color:#444;letter-spacing:1px;text-transform:uppercase;margin-bottom:20px;">G2Spain Auto</p>
+      <button onclick="closeCarModal(null)" style="background:#1a1a1a;border:1px solid #2a2a2a;color:#888;padding:10px 20px;border-radius:6px;font-size:13px;cursor:pointer;font-family:'Inter',sans-serif;">Cerrar</button>
+    </div>
+  </div>
+</div>
+
 <!-- BOTÓN FLOTANTE WHATSAPP -->
 <a class="wa-float" href="#" onclick="openWA();return false;" aria-label="WhatsApp">
   <i class="ti ti-brand-whatsapp"></i>
@@ -946,15 +983,50 @@ function openWA(){
   window.open('https://wa.me/491771800435?text='+encodeURIComponent(msg),'_blank','noopener,noreferrer');
 }
 function solicitarImportacionCoche(model, price, portal){
-  var lc=document.getElementById('lead-capture');
-  lc.style.display='block';
-  var modeloField=document.getElementById('lead-modelo');
-  if(modeloField) modeloField.value=model+(price?' — '+price:'')+(portal?' ('+portal+')':'');
-  document.getElementById('lead-form-wrap').style.display='block';
-  document.getElementById('lead-ok').style.display='none';
-  setTimeout(function(){lc.scrollIntoView({behavior:'smooth',block:'center'});},100);
+  // Show modal with car context
+  document.getElementById('modal-car-model').textContent = model;
+  document.getElementById('modal-car-price').textContent = price;
+  document.getElementById('modal-car-portal').textContent = portal;
+  document.getElementById('modal-vehiculo-hidden').value = model + ' — ' + price + ' (' + portal + ')';
+  document.getElementById('modal-subject').value = 'Solicitud importación: ' + model + ' — G2Spain';
+  document.getElementById('modal-form-wrap').style.display = 'block';
+  document.getElementById('modal-ok').style.display = 'none';
+  var btn = document.getElementById('modal-btn');
+  if(btn){ btn.disabled=false; btn.innerHTML='<i class="ti ti-send"></i> Enviar solicitud'; }
+  document.getElementById('car-modal-overlay').style.display = 'block';
+  document.body.style.overflow = 'hidden';
 }
-// Formspree AJAX submission
+function closeCarModal(e){
+  if(e && e.target !== document.getElementById('car-modal-overlay')) return;
+  document.getElementById('car-modal-overlay').style.display = 'none';
+  document.body.style.overflow = '';
+}
+// Formspree AJAX — modal form
+document.addEventListener('DOMContentLoaded',function(){
+  var mf=document.getElementById('car-modal-form');
+  if(mf){
+    mf.addEventListener('submit',async function(e){
+      e.preventDefault();
+      var btn=document.getElementById('modal-btn');
+      btn.disabled=true; btn.innerHTML='<i class="ti ti-loader-2"></i> Enviando...';
+      try{
+        var res=await fetch(mf.action,{method:'POST',body:new FormData(mf),headers:{'Accept':'application/json'}});
+        if(res.ok){
+          document.getElementById('modal-form-wrap').style.display='none';
+          document.getElementById('modal-ok').style.display='block';
+        } else {
+          btn.disabled=false; btn.innerHTML='<i class="ti ti-send"></i> Enviar solicitud';
+          alert('Error al enviar. Inténtalo de nuevo.');
+        }
+      }catch(err){
+        btn.disabled=false; btn.innerHTML='<i class="ti ti-send"></i> Enviar solicitud';
+        alert('Error de conexión.');
+      }
+    });
+  }
+});
+
+// Formspree AJAX — calculadora form
 document.addEventListener('DOMContentLoaded',function(){
   var form=document.getElementById('lead-form');
   if(!form) return;
